@@ -65,51 +65,6 @@ if(isset($_POST['addInventoryItem'])){
         $msg = "Something went wrong";
       }
     }
-// add goods type
-if(isset($_POST['addGoodsTypeBtn'])){
-    // classification
-    $goodsTypeName = $_POST['goodsTypeName']; 
-    
-      echo $insert = "INSERT INTO inventory_mstr_good_types 
-          SET 
-              goodTypeName = '$goodsTypeName'
-      ";
-      if($dbCon->query($insert)){
-        $msg = "Insert successfull";
-      }else{
-        $msg = "Something went wrong";
-      }
-    }
-// add goods group
-if(isset($_POST['addGoodsGroupBtn'])){
-    // classification
-    $goodsGroupName = $_POST['goodsGroupName']; 
-    
-      echo $insert = "INSERT INTO inventory_mstr_good_groups
-          SET 
-              goodGroupName = '$goodsGroupName'
-      ";
-      if($dbCon->query($insert)){
-        $msg = "Insert successfull";
-      }else{
-        $msg = "Something went wrong";
-      }
-    }
-// add UOM
-if(isset($_POST['addUOMBtn'])){
-    // classification
-    $uomName = $_POST['uomName']; 
-    
-      echo $insert = "INSERT INTO inventory_mstr_uom
-          SET 
-              uomName = '$uomName'
-      ";
-      if($dbCon->query($insert)){
-        $msg = "Insert successfull";
-      }else{
-        $msg = "Something went wrong";
-      }
-    }
 
 
 if(isset($_GET['add-goods'])) {
@@ -168,15 +123,8 @@ if(isset($_GET['add-goods'])) {
                         <div class="input-group">
                           <select id="" name="goodsType" class="select2 form-control form-control-border borderColor">
                             <option value="">Goods Type</option>
-                            <?php 
-                                    $gtSql = "select * from inventory_mstr_good_types order by goodTypeId desc";
-                                    $res = $dbCon->query($gtSql);
-                                    while($gtRow = $res->fetch_assoc()){
-                                    ?>
-                            <option value="<?=$gtRow['goodTypeId']?>">
-                              <?=$gtRow['goodTypeName']?>
-                            </option>
-                            <?php } ?>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
                           </select>
                         </div>
                       </div>
@@ -184,19 +132,13 @@ if(isset($_GET['add-goods'])) {
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h4 class="modal-title">Add Goods Type</h4>
+                              <h4 class="modal-title">Modal Heading</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                              <div class="col-md-12">
-                                <div class="input-group">
-                                  <input type="text" name="goodsTypeName" class="m-input" id="exampleInputBorderWidth2">
-                                  <label>Goods Type</label>
-                                </div>
-                              </div>
+                              Modal body..
                             </div>
                             <div class="modal-footer">
-                              <button type="submit" name="addGoodsTypeBtn" class="btn btn-success">Save</button>
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                           </div>
@@ -204,42 +146,37 @@ if(isset($_GET['add-goods'])) {
                       </div>
                       <div class="col-md-6 mb-3">
                         <div class="input-group">
-                          <select name="goodsGroup" class="select3 form-control form-control-border borderColor">
+                          <select name="goodsGroup" class="select2 form-control form-control-border borderColor">
                             <option value="">Goods Group</option>
-                            <?php 
-                                    $ggSql = "select * from inventory_mstr_good_groups order by goodGroupId desc";
-                                    $res = $dbCon->query($ggSql);
-                                    while($ggRow = $res->fetch_assoc()){
-                                    ?>
-                            <option value="<?= $ggRow['goodGroupId'] ?>">
-                              <?= $ggRow['goodGroupName'] ?>
-                            </option>
-                            <?php } ?>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
                           </select>
                         </div>
                       </div>
-                      <div class="modal" id="myModalGroup">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Add Goods Group</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="col-md-12">
-                                <div class="input-group">
-                                  <input type="text" name="goodsGroupName" class="m-input" id="exampleInputBorderWidth2">
-                                  <label>Goods Group</label>
-                                </div>
+                      <!-- <div class="col-md-6 mb-3">
+                                <select id="select2" class="form-control form-control-border borderColor">
+                                  <option value="">Select</option>
+                                  <option value="40">Fairy Floss Machine</option>
+                                  <option value="10">Smoke Machine</option>
+                                  <option value="0">party Effect Light</option>
+                                </select>
                               </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" name="addGoodsGroupBtn" class="btn btn-success">Save</button>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                              <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">Modal Heading</h4>
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                      Modal body..
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> -->
                       <div class="col-md-6">
                         <div class="input-group">
                           <select name="purchaseGroup" class="select2 form-control form-control-border borderColor">
@@ -312,79 +249,86 @@ if(isset($_GET['add-goods'])) {
                       </div>
                       <div class="col-md-6">
                         <div class="input-group">
-                          <input type="text" name="grossWeight" class="m-input" id="exampleInputBorderWidth2">
+                          <input type="text" name="grossWeight" class="m-input">
                           <label>Gross Weight</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="input-group">
-                          <input type="text" name="volume" class="m-input" id="exampleInputBorderWidth2">
-                          <label>volume</label>
+                          <input type="text" name="volume" class="m-input">
+                          <label>Volume</label>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="height" class="m-input" id="exampleInputBorderWidth2">
-                          <label>height</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="width" class="m-input" id="exampleInputBorderWidth2">
-                          <label>width</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="length" class="m-input" id="exampleInputBorderWidth2">
-                          <label>length</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 w-100">
-                        <div class="input-group w-100">
-                          <select name="baseUnitMeasure" class="select5 form-control form-control-border borderColor">
-                            <option value="">Base UOM</option>
-                            <?php 
-                                    $ggSql = "select * from inventory_mstr_uom order by uomId desc";
-                                    $res = $dbCon->query($ggSql);
-                                    while($ggRow = $res->fetch_assoc()){
-                                    ?>
-                            <option value="<?= $ggRow['uomId'] ?>">
-                              <?= $ggRow['uomName'] ?>
-                            </option>
-                            <?php } ?>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="modal" id="myModalUOM">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Add UOM</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="col-md-12">
-                                <div class="input-group">
-                                  <input type="text" name="uomName" class="m-input" id="exampleInputBorderWidth2">
-                                  <label>UOM Name</label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" name="addUOMBtn" class="btn btn-success">Save</button>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Volume :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="volume" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="volume">
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="issueUnit" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Issue Unit</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">height :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="height" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="height">
+                          </div>
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">width :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="width" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="width">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">length :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="length" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="length">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Base Unit Of Measure :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="baseUnitMeasure"
+                              class="form-control form-control-border borderColor" id="exampleInputBorderWidth2"
+                              placeholder="baseUnitOfMeasure">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Issue Unit :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="issueUnit" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="issueUnit">
+                          </div>
+                        </div>
+
+                      </div>
                       <div class="col-md-12">
+
                         <textarea type="text" name="itemDesc" class="form-control form-control-border borderColor"
                           id="exampleInputBorderWidth2" placeholder="Item Description"></textarea>
 
@@ -405,45 +349,83 @@ if(isset($_GET['add-goods'])) {
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="storageBin" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Storage Bin</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Storage Bin :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="storageBin" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="Storage Bin">
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="pickingArea" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Picking Area</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Picking Area :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="pickingArea" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="Picking Area">
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="tempControl" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Temp Control</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Temp Control :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="tempControl" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="Temp Control">
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="storageControl" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Storage Control</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Storage Control :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="storageControl"
+                              class="form-control form-control-border borderColor" id="exampleInputBorderWidth2"
+                              placeholder="Storage Control">
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="maxStoragePeriod" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Max Storage Period</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Max Storage Period :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="maxStoragePeriod"
+                              class="form-control form-control-border borderColor" id="exampleInputBorderWidth2"
+                              placeholder="Max Storage Period">
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="timeUnit" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Time Unit</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Time Unit :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="timeUnit" class="form-control form-control-border borderColor"
+                              id="exampleInputBorderWidth2" placeholder="Time Unit">
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="minRemainSelfLife" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Min Remain Self Life</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Min Remain Self Life :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="minRemainSelfLife"
+                              class="form-control form-control-border borderColor" id="exampleInputBorderWidth2"
+                              placeholder="Min Remain Self Life">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -462,9 +444,15 @@ if(isset($_GET['add-goods'])) {
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" name="purchasingValueKey" class="m-input" id="exampleInputBorderWidth2">
-                          <label>Purchasing Value Key</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-control borderNone">Purchasing Value Key :</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" name="purchasingValueKey"
+                              class="form-control form-control-border borderColor" id="exampleInputBorderWidth2"
+                              placeholder="Purchasing Value Key">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -597,20 +585,14 @@ if(isset($_GET['add-goods'])) {
                 </li>
               </ul>
             </div>
-
-
             <div class="card-body">
-              <a type="button" class="btn add-col" data-toggle="modal" data-target="#myModal2"
-                style="position:absolute">
-                <i class="fa fa-edit"></i>
-              </a>
               <div class="tab-content" id="custom-tabs-two-tabContent">
                 <div class="tab-pane fade show active" id="listTabPan" role="tabpanel" aria-labelledby="listTab">
                   <?php
                                         $listResult = getAllAdministratorRoles();
                                         if ($listResult["status"] == "success") {
                                         ?>
-                  <table id="mytable" class="table defaultDataTable table-hover text-nowrap">
+                  <table class="table defaultDataTable table-hover text-nowrap">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -709,9 +691,7 @@ if(isset($_GET['add-goods'])) {
                         <?php } ?>
                       </table>
                     </div>
-                    <!-- table -->
 
-                    <!-- table end -->
                     <div class="col-12">
                       <a href="<?= basename($_SERVER['PHP_SELF']); ?>" class="btn btn-warning text-light">Cancel</a>
                       <button type="submit" name="addNewAdminRoleFormBtn" class="btn btn-dark">Add
@@ -719,42 +699,6 @@ if(isset($_GET['add-goods'])) {
                     </div>
                   </form>
                 </div>
-                <div class="modal" id="myModal2">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Modal Heading</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-                      <div class="modal-body">
-                        <div id="dropdownframe"></div>
-
-                        <div id="main2">
-                          <table>
-                            <tr>
-                              <td valign="top" style="width: 165px"><input type="checkbox" checked="checked"
-                                  name="vehicle" value="0" /> Index</td>
-                            </tr>
-                            <tr>
-                              <td valign="top" style="width: 165px"><input type="checkbox" checked="checked"
-                                  name="vehicle" value="1" /> Parameter Name</td>
-                            </tr>
-                            <tr>
-                              <td valign="top" style="width: 165px"><input type="checkbox" checked="checked"
-                                  name="vehicle" value="2" /> Page Name</td>
-                            </tr>
-                          </table>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
               </div>
             </div>
           </div>
@@ -780,21 +724,7 @@ include("common/footer.php");
       .select2()
       .on('select2:open', () => {
         $(".select2-results:not(:has(a))").append(`<div class="btn-row"><a type="button" class="btn btn-primary add-btn" data-toggle="modal" data-target="#myModal">
-    Add New
-  </a></div>`);
-      });
-    $('.select3')
-      .select2()
-      .on('select2:open', () => {
-        $(".select2-results:not(:has(a))").append(`<div class="btn-row"><a type="button" class="btn btn-primary add-btn" data-toggle="modal" data-target="#myModalGroup">
-    Add New
-  </a></div>`);
-      });
-    $('.select5')
-      .select2()
-      .on('select2:open', () => {
-        $(".select2-results:not(:has(a))").append(`<div class="btn-row"><a type="button" class="btn btn-primary add-btn" data-toggle="modal" data-target="#myModalUOM">
-    Add New
+    Open modal
   </a></div>`);
       });
   });

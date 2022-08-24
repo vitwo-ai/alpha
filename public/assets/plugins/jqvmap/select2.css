@@ -673,3 +673,7 @@
 	margin: 2% !important;
 	font-size: 12px;
   }
+
+  .add-col{
+    position: absolute;
+}
