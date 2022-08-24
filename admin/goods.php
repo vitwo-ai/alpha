@@ -285,12 +285,26 @@ if(isset($_GET['add-goods'])) {
                 </div>
                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                   <div class="card-body">
+                    <?php 
+                    // random string generator :: start
+                    function generateRandomString($length = 25) {
+                      $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                      $charactersLength = strlen($characters);
+                      $randomString = '';
+                      for ($i = 0; $i < $length; $i++) {
+                          $randomString .= $characters[rand(0, $charactersLength - 1)];
+                      }
+                      return $randomString;
+                  }
+                  //usage 
+                  $randItemCode = generateRandomString(15);
+                  // random string generator :: end
+                    ?>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="input-group">
-                          <input type="text" name="itemCode" class="m-input" id="exampleInputBorderWidth2">
-
-                          <label>Item Code</label>
+                          <input type="text" name="itemCode" value="<?=$randItemCode?>" readonly class="m-input bg-light" id="exampleInputBorderWidth2">
+                          <!-- <label>Item Code</label> -->
                         </div>
 
                       </div>
@@ -752,9 +766,6 @@ if(isset($_GET['add-goods'])) {
                     </div>
                   </div>
                 </div>
-
-
-
               </div>
             </div>
           </div>
