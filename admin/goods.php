@@ -4,6 +4,8 @@ include("common/header.php");
 include("common/navbar.php");
 include("common/sidebar.php");
 
+// hello hjdfgu
+
 // add goods
 if(isset($_POST['addInventoryItem'])){
     // classification
